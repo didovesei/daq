@@ -199,6 +199,8 @@ class TestNetwork:
     def _generate_behavioral_config(self):
         with open(self.INTERMEDIATE_FAUCET_FILE, 'w') as file:
             yaml.safe_dump(self.topology.get_network_topology(), file)
+        with open(self.INTERMEDIATE_FAUCET_FILE) as file:
+            print(f'topology:\n{file.read()}')
         self.faucitizer.reload_structural_config(self.INTERMEDIATE_FAUCET_FILE)
 
     def direct_vlan_traffic(self, port_set, vlan):
