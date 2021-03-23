@@ -3,6 +3,7 @@
 import copy
 import os
 import yaml
+import traceback # TODO didovesei
 
 from base_gateway import BaseGateway
 
@@ -252,6 +253,7 @@ class FaucetTopology:
     def _make_sec_port_interface(self, port_no):
         interface = {}
         interface['acl_in'] = self.PORT_ACL_NAME_FORMAT % (self.sec_name, port_no)
+        LOGGER.info('Making sec port intf %s: %s', port_no, interface['acl_in']) #TODO didovesei
         vlan_id = self._port_set_vlan(port_no) if self._use_vlan_triggers() else self._DUMP_VLAN
         interface['native_vlan'] = vlan_id
         return interface
@@ -336,6 +338,7 @@ class FaucetTopology:
         return config
 
     def _generate_acls(self):
+        traceback.print_stack() # TODO
         self._generate_main_acls()
         self._generate_port_acls()
 
@@ -534,6 +537,8 @@ class FaucetTopology:
 
     def _write_port_acl(self, port, rules, filename):
         LOGGER.debug("Writing port acl file %s", filename)
+        LOGGER.info("Writing port %s acl file %s:\n%s", port, filename, rules) # TODO didovesei
+        traceback.print_stack() # TODO didovesei
         acl_name = self.PORT_ACL_NAME_FORMAT % (self.sec_name, port)
         acls = {}
         acls[acl_name] = rules
