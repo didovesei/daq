@@ -123,7 +123,7 @@ class SimpleAclStateCollectorTestCase(AclStateCollectorTestBase):
             },
             'errors': [
                 'No ACL metric sample available for switch, port, ACL, rule: sec, 2, port_2_acl, '
-                'allow ntp (cookie=7)'
+                'allow ntp (cookie=)'
             ]
         }
         self._verify_acl_count(acl_count, expected_acl_count)
