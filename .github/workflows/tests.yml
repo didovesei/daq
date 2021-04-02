@@ -9,6 +9,7 @@ on:
   schedule:
     - cron: '0 */2 * * *'
 
+jobs:
   unit_tests:
     runs-on: ubuntu-18.04
     steps:
