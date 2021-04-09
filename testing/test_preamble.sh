@@ -138,6 +138,8 @@ function activate_venv {
     if [ -d venv ]; then
         echo Activating venv
         source venv/bin/activate
+        echo venv: $VIRTUAL_ENV
+        cat venv/bin/activate
     fi
 
     if [ -n "$DAQ_CODECOV" ]; then
