@@ -139,6 +139,7 @@ function activate_venv {
         echo Activating venv
         source venv/bin/activate
         echo venv: $VIRTUAL_ENV
+        ls -l venv/bin
         cat venv/bin/activate
     fi
 
