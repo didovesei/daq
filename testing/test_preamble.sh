@@ -147,5 +147,9 @@ function activate_venv {
         PYTHON_CMD="python3"
     fi
 
-    export PYTHON_CMD
+    local ROOT=$(realpath $(dirname $0)/..)
+    local FAUCET=$(realpath $ROOT/faucet)
+    local PYTHON_PATH=$FAUCET:$PYTHONPATH
+
+    export PYTHON_CMD="env PYTHONPATH=$PYTHON_PATH $PYTHON_CMD"
 }
