@@ -149,7 +149,8 @@ function activate_venv {
 
     local ROOT=$(realpath $(dirname $0)/..)
     local FAUCET=$(realpath $ROOT/faucet)
-    local PYTHON_PATH=$FAUCET:$PYTHONPATH
+    local FORCH=$(realpath $ROOT/forch)
+    local PYTHON_PATH=$FAUCET:$FORCH:$ROOT:$PYTHONPATH
 
     export PYTHON_CMD="env PYTHONPATH=$PYTHON_PATH $PYTHON_CMD"
 }
