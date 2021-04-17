@@ -77,10 +77,11 @@ function test_mud {
     rule_counts_file=inst/device_rule_counts.json
 
     cmd/run -k -s device_specs=$device_spces_file &
-    sleep 60
-
-    tcpdump -r inst/run-9a02571e8f01/scans/monitor.pcap udp &
     sleep 120
+
+    echo tcpdump:
+    tcpdump -r inst/run-9a02571e8f01/scans/monitor.pcap udp &
+    sleep 60
 
     echo result $type | tee -a $TEST_RESULTS
 
