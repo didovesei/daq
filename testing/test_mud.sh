@@ -24,7 +24,6 @@ echo %%%%%%%%%%%%%%%%%%%%%% Mud profile tests | tee -a $TEST_RESULTS
 rm -f local/system.yaml
 cat > local/system.conf << EOF
 include=../config/system/muddy.conf
-switch_setup.varz_port=9302
 EOF
 
 if [ -z `which tcpdump` ]; then
