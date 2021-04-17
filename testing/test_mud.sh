@@ -80,7 +80,7 @@ function test_mud {
     cmd/run -k -s device_specs=$device_spces_file &
     sleep 60
 
-    $PYTHON_CMD daq/traffic_analyzer.py $device_specs_file $rule_counts_file &
+    tcpdump -r inst/run-9a02571e8f01/scans/monitor.pcap udp &
     sleep 120
 
     echo result $type | tee -a $TEST_RESULTS
@@ -88,8 +88,6 @@ function test_mud {
     test_device_traffic 1
     test_device_traffic 2
 
-    test_acl_count 1
-    test_acl_count 2
 
     more inst/run-*/nodes/*/activate.log | cat
 
